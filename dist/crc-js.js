@@ -14,7 +14,7 @@ var Crc = function (options) {
 
 Crc.prototype = {
 
-    version: "1.0.0-beta1",
+    version: "1.0.0-beta2",
 
     initialize: function (options) {
         this._width = options.width;
@@ -120,7 +120,7 @@ Crc.prototype = {
     }
 };
 
-exports.Crc = Crc;
+module.exports.Crc = Crc;
 /**
  * Created by Johannes Rudolph on 09.12.2016.
  */
