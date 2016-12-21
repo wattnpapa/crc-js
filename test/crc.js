@@ -6,7 +6,6 @@ var assert = require('chai').assert;
 var CRC = require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../dist/') + 'crc-js').Crc;
 var CrcDatabase = require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../dist/') + 'crc-js').CrcDatabase;
 
-console.log(CrcDatabase);
 describe('CRC', function () {
     describe('test init', function () {
         it('should test the initialize with options',function () {
