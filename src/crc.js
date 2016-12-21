@@ -17,12 +17,13 @@ Crc.prototype = {
     version: "{{ VERSION }}",
 
     initialize: function (options) {
-        this._width = options.width;
-        this._polynomial = options.polynomial;
-        this._initialVal = options.initial;
-        this._finalXorVal = options.finalXor;
-        this._inputReflected = options.inputReflected;
-        this._resultReflected = options.resultReflected;
+            this._width = options.width;
+            this._polynomial = options.polynomial;
+            this._initialVal = options.initial;
+            this._finalXorVal = options.finalXor;
+            this._inputReflected = options.inputReflected;
+            this._resultReflected = options.resultReflected;
+
 
         switch (this._width)
         {
@@ -60,46 +61,14 @@ Crc.prototype = {
         }
     },
 
-    calcCrcTableReversed : function ()
-    {
-        this._crcTable = new Array(256);
-
-        for (var divident = 0; divident < 256; divident++)
-        {
-            var reflectedDivident = new CrcUtil().Reflect8(divident);
-
-            var currByte = (reflectedDivident << (this._width - 8)) & this._castMask;
-
-            for (var bit = 0; bit < 8; bit++)
-            {
-                if ((currByte & this._msbMask) !== 0)
-                {
-                    currByte <<= 1;
-                    currByte ^= this._polynomial;
-                }
-                else
-                {
-                    currByte <<= 1;
-                }
-            }
-
-            currByte = new CrcUtil().ReflectGeneric(currByte, this._width);
-
-            this._crcTable[divident] = (currByte & this._castMask);
-        }
-    },
-
-    compute : function (bytes)
-    {
+    compute : function (bytes){
         var crc = this._initialVal;
-        for (var i = 0; i < bytes.length; i++)
-        {
+        for (var i = 0; i < bytes.length; i++){
 
             var curByte = bytes[i] & 0xFF;
 
-            if (this._inputReflected)
-            {
-                curByte = new CrcUtil().Reflect8(curByte);
+            if (this._inputReflected){
+                curByte = this.reflect(curByte, 8);
             }
 
             /* update the MSB of crc value with next input byte */
@@ -112,11 +81,22 @@ Crc.prototype = {
             crc = (crc ^ this._crcTable[pos]) & this._castMask;
         }
 
-        if (this._resultReflected)
-        {
-            crc = new CrcUtil().ReflectGeneric(crc, this._width);
+        if (this._resultReflected) {
+            crc = this.reflect(crc, this._width);
         }
         return ((crc ^ this._finalXorVal) & this._castMask);
+    },
+
+    reflect: function (val, width) {
+        var resByte = 0;
+
+        for (var i = 0; i < width; i++) {
+            if ((val & (1 << i)) !== 0) {
+                resByte |= (1 << ((width-1) - i));
+            }
+        }
+
+        return resByte;
     }
 };
 

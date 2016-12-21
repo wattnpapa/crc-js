@@ -2,7 +2,7 @@
  * Created by Johannes Rudolph on 09.12.2016.
  */
 
-function CrcModel(width, name, polynomial, initial, finalXor, inputReflected, resultReflected) {
+function CrcModel (width, name, polynomial, initial, finalXor, inputReflected, resultReflected) {
     this.width = width;
     this.name = name;
     this.polynomial = polynomial;
