@@ -120,4 +120,4 @@ Crc.prototype = {
     }
 };
 
-exports.Crc = Crc;
+module.exports.Crc = Crc;
