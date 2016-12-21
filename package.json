@@ -27,18 +27,19 @@
   },
   "homepage": "https://github.com/PowerPan/crc-js",
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-jshint": "~1.0.0",
-    "grunt-contrib-qunit": "^1.0.1",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-yuidoc": "~1.0.0",
     "grunt-env": "^0.4.4",
-    "grunt-istanbul": "^0.7.1",
+    "grunt-istanbul": "^0.7.2",
     "grunt-mocha-test": "^0.12.7",
     "grunt-string-replace": "^1.3.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   }
 }

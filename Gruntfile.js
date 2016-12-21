@@ -31,6 +31,47 @@ module.exports = function (grunt) {
             all: ['src/*.js']
         },
 
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    captureFile: 'results.txt', // Optionally capture the reporter output to a file
+                    quiet: false, // Optionally suppress output to standard out (defaults to false)
+                    clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
+                },
+                src: ['test/**/*.js']
+            }
+        },
+
+        env: {
+            coverage: {
+                APP_DIR_FOR_CODE_COVERAGE: '../coverage/instrument/dist/'
+            }
+        },
+
+        instrument: {
+            files: 'dist/*.js',
+            options: {
+                lazy: true,
+                basePath: 'coverage/instrument/'
+            }
+        },
+
+        storeCoverage: {
+            options: {
+                dir: 'coverage/reports'
+            }
+        },
+
+        makeReport: {
+            src: 'coverage/reports/**/*.json',
+            options: {
+                type: 'cobertura',
+                dir: 'coverage/reports',
+                print: 'detail'
+            }
+        },
+
         uglify: {
           options: {
             banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> Copyright by <%= pkg.author.name %> <%= pkg.author.email %> */\n'
@@ -46,11 +87,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-string-replace');
+    grunt.loadNpmTasks('grunt-istanbul');
+    grunt.loadNpmTasks('grunt-env');
 
     grunt.registerTask('check', ['jshint']);
-    grunt.registerTask('test', ['qunit']);
-    grunt.registerTask('jenkins', ['jshint', 'qunit']);
-    grunt.registerTask('default', ['jshint', 'concat','string-replace','uglify']);
+    grunt.registerTask('test', ['concat','mochaTest']);
+    grunt.registerTask('coverage', ['concat', 'jshint', 'env:coverage', 'instrument', 'mochaTest', 'storeCoverage', 'makeReport']);
+    grunt.registerTask('default', ['jshint', 'concat', 'jshint', 'env:coverage', 'instrument', 'mochaTest', 'storeCoverage', 'makeReport','string-replace','uglify']);
 };
