@@ -17,8 +17,8 @@
     "crc"
   ],
   "author": {
-    "name" : "Johannes Rudolph",
-    "email" :  "<johannes.rudolph@gmx.com>"
+    "name": "Johannes Rudolph",
+    "email": "<johannes.rudolph@gmx.com>"
   },
   "readme": "README.md",
   "license": "MIT",
@@ -35,6 +35,7 @@
     "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-yuidoc": "~1.0.0",
+    "grunt-coveralls": "^1.0.1",
     "grunt-env": "^0.4.4",
     "grunt-istanbul": "^0.7.2",
     "grunt-mocha-test": "^0.12.7",
