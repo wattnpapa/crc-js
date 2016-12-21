@@ -14,7 +14,7 @@ var Crc = function (options) {
 
 Crc.prototype = {
 
-    version: "1.0.0-beta2",
+    version: "1.0.0",
 
     initialize: function (options) {
         this._width = options.width;
