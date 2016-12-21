@@ -1,0 +1,44 @@
+{
+  "name": "crc-js",
+  "version": "1.0.0-beta1",
+  "description": "Javascript CRC Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PowerPan/crc-js.git"
+  },
+  "keywords": [
+    "crc8",
+    "crc16",
+    "crc32",
+    "crc"
+  ],
+  "author": {
+    "name" : "Johannes Rudolph",
+    "email" :  "<johannes.rudolph@gmx.com>"
+  },
+  "readme": "README.md",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PowerPan/crc-js/issues"
+  },
+  "homepage": "https://github.com/PowerPan/crc-js",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-qunit": "^1.0.1",
+    "grunt-contrib-uglify": "~2.0.0",
+    "grunt-contrib-yuidoc": "~1.0.0",
+    "grunt-env": "^0.4.4",
+    "grunt-istanbul": "^0.7.1",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-string-replace": "^1.3.0",
+    "mocha": "^3.0.2"
+  }
+}
