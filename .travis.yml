@@ -7,3 +7,6 @@ node_js:
   - "7.3.0"
 before_install: npm install -g grunt-cli
 install: npm install
+addons:
+    code_climate:
+        repo_token: 23f9fbddf73cfec065409dea0a61683882f8555e72a5891a5940dff56e2272f0
